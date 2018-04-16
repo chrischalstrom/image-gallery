@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+
+import './ImageGallery.css';
 
 const preload = images => {
   images.forEach(img => {
@@ -14,15 +20,27 @@ export default class ImageGallery extends Component {
   }
 
   render() {
-    console.log('img gallery props', this.props);
-
     return (
       <article>
         <button onClick={this.props.onPrevious}>&lt;</button>
-        <figure>
-          <img src={this.props.currentImg.src} alt={this.props.currentImg.caption} />
-          <figcaption>{this.props.currentImg.caption}</figcaption>
-        </figure>
+        <TransitionGroup className="image-gallery">
+          {
+            [this.props.currentImg].map(img => (
+              <CSSTransition
+                key={img.src}
+                timeout={500}
+                classNames="fade"
+              >
+                <figure>
+                  <div className="figure-content-wrap">
+                    <img src={this.props.currentImg.src} alt={this.props.currentImg.caption} />
+                    <figcaption>{this.props.currentImg.caption}</figcaption>
+                  </div>
+                </figure>
+              </CSSTransition>
+            ))
+          }
+        </TransitionGroup>
         <button onClick={this.props.onNext}>&gt;</button>
       </article>
     );

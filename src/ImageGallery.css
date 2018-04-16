@@ -1,0 +1,54 @@
+/*
+  Could use better Sass with variables, etc, after ejecting the
+  create-react-app config and tweaking webpack conf.
+*/
+
+.image-gallery {
+  overflow: hidden; /* for animating entry/exit of images */
+  height: 350px;
+  position: relative;
+}
+
+.image-gallery figure {
+  display: block;
+  position: relative;
+  width: 350px;
+  margin: 0 auto;
+}
+
+.image-gallery figcaption {
+  position: absolute;
+  top: 0;
+}
+
+.image-gallery figure img {
+  max-width: 350px;
+  max-height: 350px;
+  height: auto;
+
+  position: relative;
+}
+
+.figure-content-wrap {
+  position: absolute;
+}
+
+.fade-enter .figure-content-wrap {
+  transform: translateY(-350px);
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
+}
+
+.fade-enter-active .figure-content-wrap {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-exit .figure-content-wrap {
+  transition: transform 500ms, opacity 500ms;
+}
+
+.fade-exit-active .figure-content-wrap {
+  transform: translateY(350px);
+  opacity: 0;
+}
