@@ -8,6 +8,7 @@ import cat2 from '../img/cat2.jpg';
 import cat3 from '../img/cat3.jpg';
 import cat4 from '../img/cat4.jpg';
 
+// TODO include null img and img that 404s?
 const images = [
   { src: cat1, caption: 'Hi 😍' },
   { src: cat2, caption: 'ਮੈਂ ਇੱਕ ਵੱਡੇ ਸੈਂਡਵਿੱਚ ਨੂੰ ਚਾਹਵਾਨ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ' },
@@ -16,7 +17,7 @@ const images = [
 ];
 
 export const isValidPath = (match, images) => {
-  const intImgId = parseInt(match.params.imageId);
+  const intImgId = parseInt(match.params.imageId, 10);
 
   if (isNaN(intImgId)) return false;
   if (intImgId < 0) return false;
@@ -29,12 +30,12 @@ const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Comp
   get curId() { return this.props.match.params.imageId; }
 
   handlePrevious = () => {
-    const prev = parseInt(this.curId) - 1;
+    const prev = parseInt(this.curId, 10) - 1;
     this.props.history.push(this.props.location.pathname.replace(/\d+$/, prev));
   }
 
   handleNext = () => {
-    const next = parseInt(this.curId) + 1;
+    const next = parseInt(this.curId, 10) + 1;
     this.props.history.push(this.props.location.pathname.replace(/\d+$/, next));
   }
 
@@ -42,7 +43,7 @@ const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Comp
     console.log('img gallery container', this.props);
 
     if (!isValidPath(this.props.match, images)) {
-      return <Redirect to={`/images/${parseInt(this.curId) === -1 ? images.length - 1 : 0}`} />;
+      return <Redirect to={`/images/${parseInt(this.curId, 10) === -1 ? images.length - 1 : 0}`} />;
     }
 
     return (
@@ -52,6 +53,7 @@ const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Comp
           images={images}
           onPrevious={this.handlePrevious}
           onNext={this.handleNext}
+          preload
         />
       </Fragment>
     );

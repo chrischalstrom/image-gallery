@@ -7,6 +7,8 @@ import ImageGallery from './containers/ImageGallery';
 
 class App extends Component {
   componentDidMount() {
+    if (this.props.location.pathname.match('images')) return;
+
     // the only page in the app is the image gallery
     this.props.history.replace('/images/');
   }
