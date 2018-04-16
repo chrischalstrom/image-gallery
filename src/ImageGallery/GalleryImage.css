@@ -10,10 +10,13 @@
 .image-gallery figcaption {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(0, 0, 0, 0.5);
-  position: relative;
+  position: absolute;
+  left: 0;
   width: 100%;
-  bottom: 2em;
-  padding: 0 0 8px 0;
+  bottom: 2.5em;
+  padding: 8px 0;
+
+  transition: opacity 300ms;
 }
 
 .image-gallery figcaption div {
@@ -33,22 +36,26 @@
   max-width: 350px;
 }
 
-.fade-enter .figure-content-wrap {
+.fade-enter img {
   transform: translateX(-350px);
   opacity: 0;
   transition: transform 500ms, opacity 500ms;
 }
 
-.fade-enter-active .figure-content-wrap {
+.fade-enter-active img {
   transform: translateX(0);
   opacity: 1;
 }
 
-.fade-exit .figure-content-wrap {
+.fade-exit img {
   transition: transform 500ms, opacity 500ms;
 }
 
-.fade-exit-active .figure-content-wrap {
+.fade-exit-active img {
   transform: translateX(350px);
+  opacity: 0;
+}
+
+.fade-exit figcaption {
   opacity: 0;
 }

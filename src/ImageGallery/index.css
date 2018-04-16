@@ -4,12 +4,16 @@
 */
 
 .image-gallery {
-  background: #333;
+  background: #888;
   display: flex;
   align-items: center;
+
   overflow: hidden; /* for animating entry/exit of images */
+
   height: 350px;
   width: 350px;
-  margin: 0 auto;
+
   position: relative;
+  top: 25px;
+  margin: 0 auto;
 }
