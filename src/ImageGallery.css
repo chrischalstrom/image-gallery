@@ -6,13 +6,17 @@
 .image-gallery {
   overflow: hidden; /* for animating entry/exit of images */
   height: 350px;
+  width: 350px;
+  margin: 0 auto;
   position: relative;
 }
 
 .image-gallery figure {
-  display: block;
-  position: relative;
+  display: flex;
+  align-items: center;
+  position: absolute;
   width: 350px;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -25,22 +29,20 @@
   max-width: 350px;
   max-height: 350px;
   height: auto;
-
-  position: relative;
 }
 
 .figure-content-wrap {
-  position: absolute;
+  margin: auto;
 }
 
 .fade-enter .figure-content-wrap {
-  transform: translateY(-350px);
+  transform: translateX(-350px);
   opacity: 0;
   transition: transform 500ms, opacity 500ms;
 }
 
 .fade-enter-active .figure-content-wrap {
-  transform: translateY(0);
+  transform: translateX(0);
   opacity: 1;
 }
 
@@ -49,6 +51,6 @@
 }
 
 .fade-exit-active .figure-content-wrap {
-  transform: translateY(350px);
+  transform: translateX(350px);
   opacity: 0;
 }

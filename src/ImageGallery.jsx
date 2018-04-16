@@ -25,6 +25,7 @@ export default class ImageGallery extends Component {
         <button onClick={this.props.onPrevious}>&lt;</button>
         <TransitionGroup className="image-gallery">
           {
+            //[this.props.currentImg, this.props.images[1]].map(img => (
             [this.props.currentImg].map(img => (
               <CSSTransition
                 key={img.src}

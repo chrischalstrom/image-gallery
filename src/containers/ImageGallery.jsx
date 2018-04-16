@@ -12,6 +12,9 @@ import dog2 from '../img/dog2.jpg';
 import dog3 from '../img/dog3.jpg';
 import dog4 from '../img/dog4.jpg';
 import dog5 from '../img/dog5.jpg';
+import wide from '../img/wide.jpg';
+import tall from '../img/tall.jpg';
+import small from '../img/small.jpg';
 
 // TODO include null img and img that 404s?
 const images = [
@@ -24,6 +27,9 @@ const images = [
   { src: dog3, caption: 'This is also a dog' },
   { src: dog4, caption: 'Dog' },
   { src: dog5, caption: 'Another dog' },
+  { src: wide, caption: 'wide img' },
+  { src: tall, caption: 'tall img' },
+  { src: small, caption: 'small img' },
 ];
 
 export const isValidPath = (match, images) => {
