@@ -45,7 +45,7 @@ describe('Image gallery container', () => {
 
     it('true if id is first in set', () => {
       expect(isValidPath({
-        params: { imageId: '1' },
+        params: { imageId: '0' },
       }, images)).toBe(true);
     });
   });
