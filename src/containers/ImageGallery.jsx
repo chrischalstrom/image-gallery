@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 import ImageGallery from '../ImageGallery';
 
@@ -11,11 +11,23 @@ const images = [
   { src: cat2, caption: 'ਮੈਂ ਇੱਕ ਵੱਡੇ ਸੈਂਡਵਿੱਚ ਨੂੰ ਚਾਹਵਾਨ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ' },
 ];
 
+export const isValidPath = (match, images) => {
+  const intImgId = parseInt(match.params.imageId);
+
+  if (isNaN(intImgId)) return false;
+  if (intImgId < 0) return false;
+  if (intImgId >= images.length) return false;
+
+  return true;
+}
+
 const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Component {
   get curId() { return this.props.match.params.imageId; }
 
   render() {
     console.log('img gallery container', this.props);
+
+    if (!isValidPath(this.props.match, images)) return <Redirect to="/images/0" />;
 
     return (
       <Fragment>

@@ -8,7 +8,7 @@ import ImageGallery from './containers/ImageGallery';
 class App extends Component {
   componentDidMount() {
     // the only page in the app is the image gallery
-    this.props.history.replace('/images/0');
+    this.props.history.replace('/images/');
   }
 
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
           <h1 className="App-title">Image Gallery</h1>
         </header>
         <section>
-          <Route path="/images/:imageId">
+          <Route path="/images/:imageId?">
             <ImageGallery />
           </Route>
         </section>
