@@ -14,30 +14,48 @@ const preload = images => {
   });
 };
 
+class GalleryImage extends Component {
+  render() {
+    const { src, caption } = this.props.currentImg;
+
+    return (
+      <figure>
+        <div className="figure-content-wrap">
+          <img src={src} alt={caption} />
+          {
+            caption &&
+              <figcaption title={caption}>
+                <div>
+                  {caption}
+                </div>
+              </figcaption>
+          }
+        </div>
+      </figure>
+    );
+  }
+}
+
 export default class ImageGallery extends Component {
   componentDidMount() {
     if (this.props.preload) preload(this.props.images);
   }
 
   render() {
+    const { currentImg } = this.props;
+
     return (
       <article>
         <button onClick={this.props.onPrevious}>&lt;</button>
         <TransitionGroup className="image-gallery">
           {
-            //[this.props.currentImg, this.props.images[1]].map(img => (
-            [this.props.currentImg].map(img => (
+            [currentImg].map(img => (
               <CSSTransition
                 key={img.src}
                 timeout={500}
                 classNames="fade"
               >
-                <figure>
-                  <div className="figure-content-wrap">
-                    <img src={this.props.currentImg.src} alt={this.props.currentImg.caption} />
-                    <figcaption>{this.props.currentImg.caption}</figcaption>
-                  </div>
-                </figure>
+                <GalleryImage currentImg={currentImg} />
               </CSSTransition>
             ))
           }

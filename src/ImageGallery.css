@@ -21,8 +21,17 @@
 }
 
 .image-gallery figcaption {
-  position: absolute;
-  top: 0;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  bottom: 2em;
+  padding: 4px 8px;
+}
+
+.image-gallery figcaption div {
+  height: calc(1em + 4px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .image-gallery figure img {
@@ -33,6 +42,7 @@
 
 .figure-content-wrap {
   margin: auto;
+  max-width: 350px;
 }
 
 .fade-enter .figure-content-wrap {
