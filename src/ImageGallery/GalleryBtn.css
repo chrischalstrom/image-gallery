@@ -1,0 +1,34 @@
+.gallery-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 3em;
+  border: 1px solid black;
+  transition: font-size 300ms, background 300ms;
+}
+
+.gallery-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  font-size: 3.2em;
+  cursor: pointer;
+}
+
+.gallery-btn:focus {
+  outline: 0;
+}
+
+.gallery-btn-next {
+  right: 0;
+}
+
+.gallery-btn-prev {
+  left: 0;
+  transform: scaleX(-1.0);
+}
+
+.fade-enter-active + .gallery-btn {
+  display: none;
+}
+
+.fade-enter-done + .gallery-btn {
+  display: block;
+}

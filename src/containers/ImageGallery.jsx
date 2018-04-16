@@ -67,7 +67,7 @@ const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Comp
         <Cmp
           currentImg={images[this.curId]}
           images={images}
-          onPrevious={this.handlePrevious}
+          onPrev={this.handlePrevious}
           onNext={this.handleNext}
           preload
         />
