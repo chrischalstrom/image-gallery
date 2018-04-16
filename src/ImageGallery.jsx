@@ -7,10 +7,12 @@ export default class ImageGallery extends Component {
 
     return (
       <article>
+        <button onClick={this.props.onPrevious}>&lt;</button>
         <figure>
           <img src={this.props.currentImg.src} />
           <figcaption>{this.props.currentImg.caption}</figcaption>
         </figure>
+        <button onClick={this.props.onNext}>&gt;</button>
       </article>
     );
   }
@@ -19,6 +21,8 @@ export default class ImageGallery extends Component {
 const imagePropShape = PropTypes.shape({ src: PropTypes.string, caption: PropTypes.string });
 
 ImageGallery.propTypes = {
-  currentImg: imagePropShape,
-  images: PropTypes.arrayOf(imagePropShape),
+  currentImg: imagePropShape.isRequired,
+  images: PropTypes.arrayOf(imagePropShape).isRequired,
+  onPrevious: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
 };
