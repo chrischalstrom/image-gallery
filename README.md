@@ -8,7 +8,7 @@
 
 ```
   currentImg: ({ src: string, caption: string }),
-  images: [(src: string, caption: string }),
+  images: [({ src: string, caption: string })],
 
   onPrev: () => void - function that should be invoked when going to the previous image,
   onNext: () => void - function that should be invoked when going to the next image,
