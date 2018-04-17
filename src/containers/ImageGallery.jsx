@@ -56,8 +56,6 @@ const ImageGalleryContainer = Cmp => class ImageGalleryContainerCmp extends Comp
   }
 
   render() {
-    console.log('img gallery container', this.props);
-
     if (!isValidPath(this.props.match, images)) {
       return <Redirect to={`/images/${parseInt(this.curId, 10) === -1 ? images.length - 1 : 0}`} />;
     }

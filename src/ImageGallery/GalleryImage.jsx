@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Swipeable from 'react-swipeable';
 
 import './GalleryImage.css';
 import GalleryBtn from './GalleryBtn';
@@ -11,7 +12,7 @@ export default class GalleryImage extends Component {
 
     return (
       <Fragment>
-        <figure>
+        <Swipeable onSwipedLeft={onPrev} onSwipedRight={onNext} nodeName="figure">
           <div className="figure-content-wrap">
             <img src={src} alt={caption} />
             {
@@ -23,7 +24,7 @@ export default class GalleryImage extends Component {
                 </figcaption>
             }
           </div>
-        </figure>
+        </Swipeable>
         <GalleryBtn prev onClick={onPrev} />
         <GalleryBtn next onClick={onNext} />
       </Fragment>
