@@ -4,6 +4,7 @@ import {
   CSSTransition,
   TransitionGroup,
 } from 'react-transition-group';
+import cn from 'classnames';
 
 import './index.css';
 import GalleryImage from './GalleryImage';
@@ -20,12 +21,23 @@ export default class ImageGallery extends Component {
     if (this.props.preload) preload(this.props.images);
   }
 
+  onPrev = () => {
+    this.setState({ swipedLeft: true, swipedRight: false }, this.props.onPrev);
+  };
+
+  onNext = () => {
+    this.setState({ swipedLeft: false, swipedRight: true }, this.props.onNext);
+  };
+
+  state = ({ swipedLeft: false, swipedRight: false });
+
   render() {
-    const { currentImg, onNext, onPrev } = this.props;
+    const { currentImg } = this.props;
+    const { swipedLeft, swipedRight } = this.state;
 
     return (
       <article>
-        <TransitionGroup className="image-gallery">
+        <TransitionGroup className={cn('image-gallery', { 'exit-left': swipedLeft, 'exit-right': swipedRight })}>
           {
             [currentImg].map(img => (
               <CSSTransition
@@ -33,7 +45,7 @@ export default class ImageGallery extends Component {
                 timeout={500}
                 classNames="fade"
               >
-                <GalleryImage currentImg={currentImg} onNext={onNext} onPrev={onPrev} />
+                <GalleryImage currentImg={currentImg} onNext={this.onNext} onPrev={this.onPrev} />
               </CSSTransition>
             ))
           }
