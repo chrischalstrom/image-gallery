@@ -25,10 +25,6 @@
   transform: scaleX(-1.0);
 }
 
-.fade-enter-active + .gallery-btn {
+.fade-enter-active + .gallery-btn, .fade-enter-active + .gallery-btn + .gallery-btn {
   display: none;
-}
-
-.fade-enter-done + .gallery-btn {
-  display: block;
 }
