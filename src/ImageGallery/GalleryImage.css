@@ -39,6 +39,10 @@
 }
 
 .fade-enter img {
+  opacity: 0;
+}
+
+.fade-enter-active img {
   opacity: 1;
 }
 
