@@ -11,7 +11,7 @@
   overflow: hidden; /* for animating entry/exit of images */
 
   height: 350px;
-  width: 100%;
+  width: 350px;
 
   position: relative;
   top: 25px;
